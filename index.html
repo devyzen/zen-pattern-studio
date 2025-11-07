@@ -66,7 +66,8 @@
     }
     .muted {color:var(--muted);font-size:13px;}
     .presets {display:flex;gap:8px;flex-wrap:wrap;}
-    .preset-item {background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:13px;cursor:pointer;}
+    .preset-item {background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:8px;font-size:13px;cursor:pointer;display:flex;gap:8px;align-items:center;}
+    .preset-item button {padding:6px;border-radius:6px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--muted);cursor:pointer;}
     footer {grid-column:1/-1;margin-top:10px;text-align:center;color:var(--muted);font-size:12px;}
     /* responsive */
     @media (max-width:980px){
@@ -88,7 +89,7 @@
     <main class="card" id="canvasCard">
       <div id="workbench" aria-live="polite">
         <!-- SVG goes here -->
-        <svg id="pattern" width="900" height="700" viewBox="0 0 900 700" role="img" aria-label="Pattern canvas"></svg>
+        <svg id="pattern" width="900" height="700" viewBox="0 0 900 700" role="img" aria-label="Pattern canvas" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
     </main>
 
@@ -131,10 +132,12 @@
       <div class="control">
         <label>Presets</label>
         <div class="row">
-          <input id="presetName" type="text" placeholder="preset name">
+          <input id="presetName" type="text" placeholder="preset name" aria-label="Preset name">
           <button id="savePreset" class="btn">Save</button>
         </div>
-        <div id="presetsList" class="presets muted">No saved presets</div>
+        <div id="presetsList" class="presets muted" aria-live="polite" role="list">
+          <!-- Preset items will be inserted here -->
+        </div>
       </div>
 
       <div class="control muted" style="font-size:12px">
